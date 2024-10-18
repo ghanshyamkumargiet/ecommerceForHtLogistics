@@ -7,7 +7,7 @@ const Footer = () => {
       <h1 className="text-center">All Right Reserved © gk</h1>
       <p className="text-center mt-3">
         <Link to="/about"> About </Link> |<Link to="/contact"> Contact </Link>|
-        <Link to="/menu"> Menu </Link>
+        <Link to="/policy"> policy </Link>
       </p>
     </div>
   );

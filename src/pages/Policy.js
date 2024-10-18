@@ -1,12 +1,12 @@
 import React from "react";
 import Layout from "../components/Layout/Layout";
 
-const Menu = () => {
+const Policy = () => {
   return (
     <Layout>
-      <h1> Menu Page</h1>
+      <h1>policy page </h1>
     </Layout>
   );
 };
 
-export default Menu;
+export default Policy;
