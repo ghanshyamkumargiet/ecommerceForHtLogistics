@@ -31,13 +31,13 @@ const Header = () => {
             </Link>
             <ul className="navbar-nav ms-auto mb-2 mb-lg-0">
               <li className="nav-item">
-                <NavLink to="/" className="nav-link ">
-                  Home
+                <NavLink to="/About" className="nav-link ">
+                  About
                 </NavLink>
               </li>
               <li className="nav-item">
-                <NavLink to="/contact" className="nav-link ">
-                  Contact
+                <NavLink to="/Product" className="nav-link ">
+                  Product
                 </NavLink>
               </li>
               {!auth.user ? (
@@ -67,8 +67,8 @@ const Header = () => {
                 </>
               )}
               <li className="nav-item">
-                <NavLink to="/cart" className="nav-link">
-                  Cart (0)
+                <NavLink to="/contact" className="nav-link">
+                  contact
                 </NavLink>
               </li>
             </ul>

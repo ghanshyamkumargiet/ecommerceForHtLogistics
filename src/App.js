@@ -7,11 +7,14 @@ import PagenotFound from "./pages/PagenotFound";
 import Register from "./pages/Auth/Register";
 import Login from "./pages/Auth/Login";
 
+import Product from "./pages/Product";
+
 function App() {
   return (
     <>
       <Routes>
         <Route path="/" element={<HomePage />} />
+        <Route path="/Product" element={<Product />} />
         <Route path="/register" element={<Register />} />
         <Route path="/login" element={<Login />} />
         <Route path="/about" element={<About />} />
