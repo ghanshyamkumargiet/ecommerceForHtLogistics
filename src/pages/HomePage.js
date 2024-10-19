@@ -3,7 +3,7 @@ import Layout from "../components/Layout/Layout";
 import { useAuth } from "../context/auth";
 
 const HomePage = () => {
-  const { auth, setAuth } = useAuth(); // Destructure as an object
+  const { auth } = useAuth(); // Destructure as an object
 
   return (
     <Layout>
