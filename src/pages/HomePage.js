@@ -7,9 +7,8 @@ const HomePage = () => {
 
   return (
     <Layout>
-      <h1> This is HomePage</h1>
-
-      {/* <pre>{JSON.stringify(auth, null, 4)}</pre> */}
+      <h1>HomePage</h1>
+      <pre>{JSON.stringify(auth, null, 4)}</pre>
     </Layout>
   );
 };
