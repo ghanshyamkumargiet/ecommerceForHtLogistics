@@ -24,6 +24,7 @@ const Login = () => {
         }
       );
       if (res && res.data.success) {
+        console.log(res.data);
         toast.success(res.data && res.data.message);
         setAuth({
           ...auth,
@@ -31,7 +32,7 @@ const Login = () => {
           token: res.data.token,
         });
         localStorage.setItem("auth", JSON.stringify(res.data));
-        navigate("/");
+        navigate("/spinner");
       } else {
         toast.error(res.data.message);
       }
