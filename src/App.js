@@ -10,6 +10,7 @@ import Product from "./pages/Product";
 import Spinner from "./pages/Spinner";
 import Dashboard from "./pages/Dashboard";
 import PrivateRoute from "./pages/Privacy";
+import ForgotPassword from "./pages/Auth/ForgotPassword";
 
 function App() {
   return (
@@ -18,6 +19,7 @@ function App() {
         <Route path="/" element={<HomePage />} />
         <Route path="/spinner" element={<Spinner />} />
         <Route path="/register" element={<Register />} />
+        <Route path="/forgot-password" element={<ForgotPassword />} />
         <Route path="/login" element={<Login />} />
         <Route path="/about" element={<About />} />
         <Route path="/contact" element={<Contact />} />
