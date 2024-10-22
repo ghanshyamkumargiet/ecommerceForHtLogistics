@@ -20,6 +20,7 @@ const Login = () => {
         `${process.env.REACT_APP_API}/api/v1/auth/login`,
         {
           email,
+
           password,
         }
       );

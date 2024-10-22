@@ -103,7 +103,7 @@ const Register = () => {
               value={answer}
               onChange={(e) => setAnswer(e.target.value)}
               className="form-control"
-              id="Address"
+              id="answer"
               placeholder="what is your friend name "
             />
           </div>

@@ -31,8 +31,8 @@ const Header = () => {
             </Link>
             <ul className="navbar-nav ms-auto mb-2 mb-lg-0">
               <li className="nav-item">
-                <NavLink to="/About" className="nav-link ">
-                  About
+                <NavLink to="/" className="nav-link ">
+                  Home
                 </NavLink>
               </li>
               <li className="nav-item">
