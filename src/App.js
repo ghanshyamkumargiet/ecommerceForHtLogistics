@@ -8,7 +8,7 @@ import Register from "./pages/Auth/Register";
 import Login from "./pages/Auth/Login";
 import Product from "./pages/Product";
 import Spinner from "./pages/Spinner";
-import Dashboard from "./pages/Dashboard";
+import Dashboard from "./pages/user/Dashboard";
 import PrivateRoute from "./pages/Privacy";
 import ForgotPassword from "./pages/Auth/ForgotPassword";
 
