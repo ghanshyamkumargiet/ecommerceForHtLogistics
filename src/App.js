@@ -7,6 +7,9 @@ import PagenotFound from "./pages/PagenotFound";
 import Register from "./pages/Auth/Register";
 import Login from "./pages/Auth/Login";
 import Product from "./pages/Product";
+import Checkout from "./pages/Checkout";
+import OrderSuccess from "./pages/OrderSuccess";
+import Payment from "./pages/Payment";
 import Spinner from "./pages/Spinner";
 import Dashboard from "./pages/user/Dashboard";
 import PrivateRoute from "./pages/Privacy";
@@ -25,6 +28,9 @@ function App() {
         <Route path="/contact" element={<Contact />} />
         <Route path="/policy" element={<Policy />} />
         <Route path="/product" element={<Product />} />
+        <Route path="/checkout" element={<Checkout />} />
+        <Route path="/payment" element={<Payment />} />
+        <Route path="/OrderSuccess" element={<OrderSuccess />} />
         <Route path="/dashboard" element={<PrivateRoute />}>
           <Route index element={<Dashboard />} />
         </Route>

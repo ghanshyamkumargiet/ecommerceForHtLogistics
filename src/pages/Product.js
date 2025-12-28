@@ -1,83 +1,134 @@
-import React, { useState } from "react";
-import Layout from "./../components/Layout/Layout";
+import React, { useState, useEffect } from "react";
+import Layout from "../components/Layout/Layout";
 
 const Product = () => {
-  // Define the products array
   const products = [
     { id: 1, name: "Laptop", price: 999.99, image: "/images/laptop.jpg" },
     { id: 2, name: "Mobile", price: 499.99, image: "/images/mobile.jpg" },
     { id: 3, name: "Desktop", price: 799.99, image: "/images/desktop.jpg" },
     { id: 4, name: "Printer", price: 199.99, image: "/images/printer.jpg" },
-    { id: 5, name: "Tablet", price: 299.99, image: "/images/tablet.jpg" },
-    {
-      id: 6,
-      name: "Smartwatch",
-      price: 199.99,
-      image: "/images/smartwatch.jpg",
-    },
-    {
-      id: 7,
-      name: "Headphones",
-      price: 149.99,
-      image: "/images/headphones.jpg",
-    },
-    { id: 8, name: "Camera", price: 599.99, image: "/images/camera.jpg" },
-    { id: 9, name: "Speaker", price: 99.99, image: "/images/speaker.jpg" },
-    { id: 10, name: "Charger", price: 29.99, image: "/images/charger.jpg" },
   ];
 
-  // State for cart items
   const [cart, setCart] = useState([]);
 
-  // Function to add a product to the cart
+  // Load cart from localStorage
+  useEffect(() => {
+    const savedCart = JSON.parse(localStorage.getItem("cart"));
+    if (savedCart) setCart(savedCart);
+  }, []);
+
+  // Save cart to localStorage
+  useEffect(() => {
+    localStorage.setItem("cart", JSON.stringify(cart));
+  }, [cart]);
+
   const addToCart = (product) => {
-    setCart([...cart, product]);
+    const exist = cart.find((item) => item.id === product.id);
+    if (exist) {
+      setCart(
+        cart.map((item) =>
+          item.id === product.id ? { ...item, qty: item.qty + 1 } : item
+        )
+      );
+    } else {
+      setCart([...cart, { ...product, qty: 1 }]);
+    }
   };
 
-  // Function to remove a product from the cart
-  const removeFromCart = (productToRemove) => {
-    setCart(cart.filter((product) => product !== productToRemove));
+  const increaseQty = (id) => {
+    setCart(
+      cart.map((item) =>
+        item.id === id ? { ...item, qty: item.qty + 1 } : item
+      )
+    );
   };
 
-  // Calculate total items in the cart
-  const totalItems = cart.length;
+  const decreaseQty = (id) => {
+    setCart(
+      cart
+        .map((item) => (item.id === id ? { ...item, qty: item.qty - 1 } : item))
+        .filter((item) => item.qty > 0)
+    );
+  };
 
-  // Calculate the sum of prices in the cart
-  const totalPrice = cart.reduce((sum, product) => sum + product.price, 0);
+  const totalPrice = cart.reduce((sum, item) => sum + item.price * item.qty, 0);
 
   return (
     <Layout>
-      <h1>My Products</h1>
-      <div className="cart-summary">
-        <h2>Cart Summary</h2>
-        <p>Total Items in Cart: {totalItems}</p>
-        <p>Total Price: ${totalPrice.toFixed(2)}</p>
-      </div>
-
-      <h2>Cart Items</h2>
-      <div className="cart-list">
-        {cart.map((product, index) => (
-          <div key={index} className="cart-item">
-            <img src={product.image} alt={product.name} width="100" />
-            <h3>{product.name}</h3>
-            <p>Price: ${product.price}</p>
-            <button onClick={() => removeFromCart(product)}>
-              Remove from Cart
-            </button>
+      <div className="container py-5">
+        {/* Cart Summary */}
+        <div className="card shadow-sm mb-4">
+          <div className="card-body d-flex justify-content-between">
+            <strong>🛒 Items: {cart.length}</strong>
+            <strong>💰 Total: ${totalPrice.toFixed(2)}</strong>
           </div>
-        ))}
-      </div>
+        </div>
 
-      <h2>Available Products</h2>
-      <div className="product-list">
-        {products.map((product) => (
-          <div key={product.id} className="product-item">
-            <img src={product.image} alt={product.name} width="150" />
-            <h2>{product.name}</h2>
-            <p>Price: ${product.price}</p>
-            <button onClick={() => addToCart(product)}>Add to Cart</button>
-          </div>
-        ))}
+        {/* Products */}
+        <div className="row">
+          {products.map((p) => (
+            <div key={p.id} className="col-md-3 mb-4">
+              <div className="card h-100 shadow-sm">
+                <img
+                  src={p.image}
+                  className="card-img-top"
+                  style={{ height: "160px", objectFit: "contain" }}
+                />
+                <div className="card-body text-center">
+                  <h6>{p.name}</h6>
+                  <p className="text-muted">${p.price}</p>
+                  <button
+                    className="btn btn-success btn-sm w-100"
+                    onClick={() => addToCart(p)}
+                  >
+                    Add to Cart
+                  </button>
+                </div>
+              </div>
+            </div>
+          ))}
+        </div>
+
+        {/* Cart Items */}
+        {cart.length > 0 && (
+          <>
+            <h4 className="mt-5">Your Cart</h4>
+            <div className="list-group">
+              {cart.map((item) => (
+                <div
+                  key={item.id}
+                  className="list-group-item d-flex justify-content-between align-items-center"
+                >
+                  <div>
+                    <strong>{item.name}</strong>
+                    <div className="text-muted">
+                      ${item.price} × {item.qty}
+                    </div>
+                  </div>
+
+                  <div>
+                    <button
+                      className="btn btn-outline-secondary btn-sm me-2"
+                      onClick={() => decreaseQty(item.id)}
+                    >
+                      −
+                    </button>
+                    <button
+                      className="btn btn-outline-secondary btn-sm"
+                      onClick={() => increaseQty(item.id)}
+                    >
+                      +
+                    </button>
+                  </div>
+                </div>
+              ))}
+            </div>
+
+            <a href="/checkout" className="btn btn-primary mt-4">
+              Proceed to Checkout
+            </a>
+          </>
+        )}
       </div>
     </Layout>
   );
