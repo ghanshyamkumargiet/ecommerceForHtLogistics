@@ -4,10 +4,10 @@ import Layout from "../components/Layout/Layout";
 const Contact = () => {
   return (
     <Layout>
-      <p> contact name Ghanshyam kumar </p>
+      <p> Ghanshyam kumar And Anmol </p>
       <p> Mob no 7281015610</p>
-      <p> 8709262607</p>
-      <p> email- gk728101@gmail.com</p>
+      <p> 9905920934</p>
+      <p> email- anmol.kumari.edu@gmail.com</p>
     </Layout>
   );
 };
