@@ -4,6 +4,7 @@ import "./index.css";
 import App from "./App";
 import "bootstrap/dist/css/bootstrap.css";
 import "bootstrap/dist/js/bootstrap.bundle";
+import "bootstrap/dist/css/bootstrap.min.css";
 import reportWebVitals from "./reportWebVitals";
 import { AuthProvider } from "./context/auth";
 import { BrowserRouter } from "react-router-dom";
