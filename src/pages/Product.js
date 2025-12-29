@@ -72,6 +72,7 @@ const Product = () => {
                 <img
                   src={p.image}
                   className="card-img-top"
+                  alt=" Card"
                   style={{ height: "160px", objectFit: "contain" }}
                 />
                 <div className="card-body text-center">
